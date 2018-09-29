@@ -30,7 +30,7 @@
 #define C   A2
 #define D   A3
 
-int pause = 750;
+int pause = 1000;
 
 int j = 6;
 int col[6][3] = {{7,0,0}, {7,2,0}, {7,4,0}, {0,7,0}, {0,0,7}, {5,0,7}};
