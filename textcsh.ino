@@ -16,18 +16,25 @@ int pause = 500;
 RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false);
 
 void setup() {
-  delay(pause);
+  delay(2000);
   matrix.begin();
   globalStart[0] = {30};
   globalStart[1] = {1};
-  computer(globalStart);
+  csh(globalStart);
 }
 
 void loop(){
   delay(pause);
   matrix.fillRect(0,0,32,32,matrix.Color333(0,0,0));
   globalStart[0] ++;
+  csh(globalStart);
+}
+
+// Calls computer && science && house
+void csh(int globalStart[2]){
   computer(globalStart);
+  science(globalStart);
+  house(globalStart);
 }
 
 // Handles creation of COMPUTER
@@ -51,7 +58,7 @@ void createCC(int letterStart[2]){
   matrix.drawLine((x - 1)%32, y, (x - 1)%32, y + 6, matrix.Color333(1,0,0));
 }
 
-void createO(int letterStart[2]){
+void createOC(int letterStart[2]){
   int x = letterStart[0] - 24;
   int y = letterStart[1];
   matrix.drawLine(x%32, y, x%32, y + 6, matrix.Color333(1,0,0));
@@ -60,7 +67,7 @@ void createO(int letterStart[2]){
   matrix.drawPixel((x - 1)%32, y + 6, matrix.Color333(1,0,0));  
 }
 
-void createM(int letterStart[2]){
+void createMC(int letterStart[2]){
   int x = letterStart[0] - 20;
   int y = letterStart[1];
   matrix.drawLine(x%32, y, x%32, y + 6, matrix.Color333(1,0,0));
@@ -68,7 +75,7 @@ void createM(int letterStart[2]){
   matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 6, matrix.Color333(1,0,0));
 }
 
-void createP(int letterStart[2]){
+void createPC(int letterStart[2]){
   int x = letterStart[0] - 16;
   int y = letterStart[1];
   matrix.drawLine(x%32, y, x%32, y + 4, matrix.Color333(1,0,0));
@@ -85,7 +92,7 @@ void createUC(int letterStart[2]){
   matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 6, matrix.Color333(1,0,0));
 }
 
-void createT(int letterStart[2]){
+void createTC(int letterStart[2]){
   int x = letterStart[0] - 8;
   int y = letterStart[1];
   matrix.drawPixel(x%32, y, matrix.Color333(1,0,0));
@@ -105,7 +112,7 @@ void createEC(int letterStart[2]){
   matrix.drawPixel((x - 1)%32, y + 6, matrix.Color333(1,0,0));
 }
 
-void createR(int letterStart[2]){
+void createRC(int letterStart[2]){
   int x = letterStart[0];
   int y = letterStart[1];
   matrix.drawLine(x%32, y, x%32, y + 4, matrix.Color333(1,0,0));
@@ -116,3 +123,94 @@ void createR(int letterStart[2]){
   matrix.drawPixel(x%32, y + 6, matrix.Color333(1,0,0));
 }
 
+// Handles creation of SCIENCE
+void science(int tempWordStart[2]){
+  int wordStart[2] = {tempWordStart[0] - 2, tempWordStart[1] + 11};
+  createSS(wordStart);
+  createCS1(wordStart);
+  createIS(wordStart);
+  createE1S(wordStart);
+  createNS(wordStart);
+  createCS2(wordStart);
+  createES2(wordStart);
+}
+
+void createSS(int wordStart[2]){
+  int x = wordStart[0] - 25;
+  int y = wordStart[1];
+  matrix.drawLine(x%32, y, x%32, y + 1, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 3, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 3, matrix.Color333(1,0,0));
+  matrix.drawLine(x%32, y + 3, x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 2)%32, y + 6, (x - 2)%32, y + 7, matrix.Color333(1,0,0));
+}
+
+void createCS1(int wordStart[2]){
+  int x = wordStart[0] - 21;
+  int y = wordStart[1];
+  matrix.drawPixel(x%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 7, matrix.Color333(1,0,0));
+}
+
+void createIS(int wordStart[2]){
+  int x = wordStart[0] - 17;
+  int y = wordStart[1];
+  matrix.drawPixel(x%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 2)%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x- 2)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 1)%32, y, (x - 1)%32, y + 7, matrix.Color333(1,0,0));
+}
+
+void createE1S(int wordStart[2]){
+  int x = wordStart[0] - 13;
+  int y = wordStart[1];
+  matrix.drawPixel(x%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 4, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 4, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 7, matrix.Color333(1,0,0));
+}
+
+void createNS(int wordStart[2]){
+  int x = wordStart[0] - 8;
+  int y = wordStart[1];
+  matrix.drawLine(x%32, y, x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 3)%32, y, (x - 3)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 4, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 2)%32, y + 3, matrix.Color333(1,0,0));
+}
+
+void createCS2(int wordStart[2]){
+  int x = wordStart[0] - 4;
+  int y = wordStart[1];
+  matrix.drawPixel(x%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 7, matrix.Color333(1,0,0));
+}
+
+void createES2(int wordStart[2]){
+  int x = wordStart[0];
+  int y = wordStart[1];
+  matrix.drawPixel(x%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 4, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 4, matrix.Color333(1,0,0));
+  matrix.drawPixel(x%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawPixel((x - 1)%32, y + 7, matrix.Color333(1,0,0));
+  matrix.drawLine((x - 2)%32, y, (x - 2)%32, y + 7, matrix.Color333(1,0,0));
+}
+
+// Handles creation of house
+void house(int globalStart[2]){
+  
+}
