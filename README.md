@@ -1,2 +1,2 @@
 # K.L.A.M.P
-Code for an Interactive LED Matrix which displays various logos / text
+Interactive LED Matrix which displays various dyanmic and interactive logos / text
